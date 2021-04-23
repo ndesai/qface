@@ -394,7 +394,7 @@ class FileSystem(object):
                 click.secho('yaml document does not exists: {0}'.format(document), fg='red', err=True)
             return {}
         try:
-            return yaml.load(document.text(), Loader=Loader)
+            return yaml.load(document.read_text(), Loader=Loader)
         except yaml.YAMLError as exc:
             error = document
             if hasattr(exc, 'problem_mark'):

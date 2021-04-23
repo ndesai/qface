@@ -16,7 +16,7 @@ def setup_log(path='logging.yaml', level=logging.INFO, env_key='QFACE_LOG_CFG'):
     path = Path(os.getenv(env_key, path))
     if path.exists():
         try:
-            config = yaml.safe_load(path.text())
+            config = yaml.safe_load(path.read_text())
             logging.config.dictConfig(config)
             coloredlogs.install()
         except Exception as e:
